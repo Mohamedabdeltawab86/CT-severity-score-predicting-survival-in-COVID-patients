@@ -10,6 +10,7 @@ scaler = joblib.load('scaler.h5')
 def home():
     return render_template('index.html')
 
+
 @app.route('/predict', methods=['GET'])
 def predict():
     age = request.args.get('age')
@@ -18,9 +19,8 @@ def predict():
     consolidation = request.args.get('is_consolidation', 1)
     crazy_paving = request.args.get('is_crazy_paving', 1)
     CT_severity = request.args.get("CT_severity")
-    survival = model.predict(scaler.transform[[age, gender, ggo, consolidation, crazy_paving, CT_severity]])
-    return render_template("index.html", survival = survival)
-
+    survival = model.predict(scaler.transform[[age, gender, ggo, consolidation, crazy_paving, CT_severity]])[0]
+    return render_template("index.html", survival=survival)
 
 
 if __name__ == "__main__":
