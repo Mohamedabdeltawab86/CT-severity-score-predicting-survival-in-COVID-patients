@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>RegistrationForm_v7 by Colorlib</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<!-- MATERIAL DESIGN ICONIC FONT -->
+		<link rel="stylesheet" href="/static/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+		
+		<!-- STYLE CSS -->
+		<link rel="stylesheet" href="/static/css/style.css">
+	</head>
+
+	<body>
+
+		<div class="wrapper">
+			<div class="inner">
+
+				{% if survival == 1 %}
+					<p style='font-size: 25px;'>Predicted outcome is: <span style='color: #a4f773;'><b>{{ 'patient will mostly die' }}</b></span> </p>
+				{% elif survival == 0 %}
+				<p style='font-size: 25px;'>Predicted outcome is: <span style='color: #a4f773;'><b>{{ 'patient will mostly survive' }}</b></span> </p>
+				{% endif %}
+
+
+
+				<form action="/predict" method='GET'>
+					<h3>COVID-19 Patient Survival by CT severity</h3>
+					<p>This app for predicting COVID-19 patients survival based on CT severity.</p>
+					<label class="form-group">
+						<input type="number" class="form-control"  name="age">
+						<span>Age</span>
+					</label>
+					<br>
+					<label class="form-group">
+						<input type="checkbox" class="checkbox-inp"  name="is_male" value="1">
+						<span>Gender</span>
+					</label>
+					<br>
+					<label class="form-group">
+						<input type="checkbox" class="checkbox-inp"  name="is_GGO" value="1">
+						<span>GGO</span>
+					</label>
+					<br>
+					<label class="form-group">
+						<input type="checkbox" class="checkbox-inp"  name="is_consolidation" value="1">
+						<span>Consolidation</span>
+					</label>
+					<br>
+
+					<label class="form-group">
+						<input type="checkbox" class="checkbox-inp"  name="is_crazy_paving" value="1">
+						<span>Crazy paving</span>
+					</label>
+					<br>
+
+					<label class="form-group">
+						<input type="number" class="form-control"  name="CT_severity">
+						<span>CT severity</span>
+					</label>
+					<br>
+					<button type='submit'>Predict 
+						<i class="zmdi zmdi-arrow-right"></i>
+					</button>
+					<br>
+				</form>
+			</div>
+		</div>
+	</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>
